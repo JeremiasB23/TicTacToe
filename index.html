@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="printText">
+
+    <h1 class="printChild"></h1>
+
+</div>
+
+<div class="ticTacToeFlexbox">
+
+    <div class="ticTacToeFlexboxChild">
+        <div class="ticTacBox"></div>
+        <div class="ticTacBox"></div>
+        <div class="ticTacBox"></div>
+    </div>
+
+    <div class="ticTacToeFlexboxChild">
+        <div class="ticTacBox"></div>
+        <div class="ticTacBox"></div>
+        <div class="ticTacBox"></div>
+    </div>
+
+    <div class="ticTacToeFlexboxChild">
+        <div class="ticTacBox"></div>
+        <div class="ticTacBox"></div>
+        <div class="ticTacBox"></div>
+    </div>
+</div>
+    
+<script>
+
+const printText = document.querySelector(".printText");
+const printChild = document.createTextNode("WELCOME TO A GAME OF TIC TAC TOE");
+printText.appendChild(printChild);
+
+
+// const ticTacToeElection = document.querySelector(".ticTacBox")[3];
+// ticTacToeElection.addEventListener('click', function(){
+    
+//     document.getElementsByClassName('ticTacBoxModify');
+// });
+
+const tictic = document.getElementsByClassName("ticTacBox");
+const ticFlexbox = document.querySelector(".ticTacToeFlexboxChild");
+
+ticFlexbox.addEventListener('click', function(){
+
+tictic[0].style.backgroundColor = "blue";
+
+});
+
+for (let i = 0; i < tictic.length; i++) {
+  tictic[i].style.backgroundColor = "red";
+}
+tictic[6].style.backgroundColor = "green";
+tictic[7].style.backgroundColor = "orange";
+tictic[8].style.backgroundColor = "green";
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
