@@ -4,19 +4,74 @@
   box-sizing: border-box;
 }
 
+section {
+  background-color: lightgreen;
+  height: 50em;
+  width: 100%;
+}
+
+section h1 {
+  padding: 5px;
+  font-size: 80px;
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+}
+
 .move {
   padding: 30px;
+  margin-left: 37%;
   border: none;
+  background-color: lightgreen;
 }
 
 .board {
   width: 300px;
   height: 300px;
+  border: none;
 }
 
 div {
   border: 1px solid black;
-  width: 99px;
-  height: 99px;
+  width: 100px;
+  height: 101px;
   display: inline-block;
+  background-color: white;
+}
+
+@media (min-width: 501px) {
+  .move {
+    margin-left: 37%;
+  }
+}
+
+@media (max-width: 500px) {
+  .move {
+    margin-left: 10%;
+    margin-right: auto;
+  }
+  section h1 {
+    padding: 0;
+    font-size: auto;
+  }
+  .board {
+    width: 15em;
+    height: 15em;
+  }
+
+  div {
+    width: 5em;
+    height: 5em;
+  }
+}
+
+@media (max-width: 300px) {
+  .board {
+    width: 10em;
+    height: 10em;
+  }
+
+  div {
+    width: 3.33em;
+    height: 3.33em;
+  }
 }

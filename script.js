@@ -1,4 +1,4 @@
-const boardArray = [];
+const boardArray = ["0", "0", "0", "0", "0", "0", "0", "0", "0"];
 let turns = 0;
 
 function createSquare() {
@@ -21,10 +21,10 @@ function createSquare() {
     elem.addEventListener("click", function () {
       if (turns % 2 == 0) {
         this.style.backgroundColor = "red";
-        boardArray.splice(elem, 0, "O"); //!I have to check how to add the 0 to the specific square in the array
+        boardArray.splice(elem.value, elem.value, "O"); //!I have to check how to add the 0 to the specific square in the array
       } else {
         this.style.backgroundColor = "blue";
-        boardArray.splice(elem, 0, "X");
+        boardArray.splice(elem.value, elem.value, "X");
       }
 
       turns++;
