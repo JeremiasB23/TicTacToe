@@ -6,7 +6,7 @@
 
 section {
   background-color: lightgreen;
-  height: 50em;
+  height: 30em;
   width: 100%;
 }
 
@@ -75,9 +75,17 @@ div {
   top: -40px;
 }
 
+button {
+  font-size: 20px;
+  width: 300px;
+  height: 50px;
+  background-color: white;
+  margin-left: 38%;
+}
+
 @media (min-width: 501px) {
   .move {
-    margin-left: 23%;
+    margin-left: 37%;
   }
 }
 

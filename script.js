@@ -1,10 +1,13 @@
-const boardArray = ["", "", "", "", "", "", "", "", ""];
+let boardArray = ["", "", "", "", "", "", "", "", ""];
 let turns = 0;
+
+let square = new Array();
+let win = false;
+let xOy = 0;
+let empate = 0;
 
 function createSquare() {
   const board = document.querySelector(".board");
-
-  let square = new Array();
 
   circulito = document.createElement("div");
   circulito2 = document.createElement("div");
@@ -33,24 +36,25 @@ function createSquare() {
     square[i].addEventListener("click", function () {
       if (boardArray[i] != "O" && boardArray[i] != "X") {
         if (turns % 2 == 0) {
-          //this.style.backgroundColor = "red";
           //square[i].appendChild(circulito);
           //circulito.appendChild(circulito2);
           this.style.backgroundColor = "red";
           boardArray.splice(i, 1, "O");
-          checkWinner();
+
           turns++;
         } else {
           this.style.backgroundColor = "blue";
           // this.appendChild(cruz);
           // cruz.appendChild(cruz2);
           boardArray.splice(i, 1, "X");
-          checkWinner();
+
           turns++;
         }
+        checkWinner();
       }
     });
   }
+  return square;
 }
 
 function checkWinner() {
@@ -65,6 +69,9 @@ function checkWinner() {
     (boardArray[2] == "O" && boardArray[4] == "O" && boardArray[6] == "O")
   ) {
     console.log("O GANASTE");
+    win = true;
+    xOy = 1;
+    finishedGameMessage();
   } else if (
     (boardArray[0] == "X" && boardArray[1] == "X" && boardArray[2] == "X") ||
     (boardArray[2] == "X" && boardArray[5] == "X" && boardArray[8] == "X") ||
@@ -76,10 +83,58 @@ function checkWinner() {
     (boardArray[2] == "X" && boardArray[4] == "X" && boardArray[6] == "X")
   ) {
     console.log("X GANASTE");
+    win = true;
+    xOy = 2;
+    finishedGameMessage();
+  }
+
+  if (!win) {
+    for (let i = 0; i < 9; i++) {
+      if (boardArray[i] == "O" || boardArray[i] == "X") {
+        empate++;
+        console.log(empate);
+      }
+    }
+  }
+
+  if (empate == 45) {
+    console.log("empate");
+    finishedGameMessage();
   }
 
   //*EL if para finalizar que sea si todas las casillas del array
   //*estan llenas
+}
+
+function finishedGameMessage() {
+  let messageSection = document.querySelector(".messageSection");
+  let message = document.createElement("h1");
+  let button = document.createElement("button");
+  messageSection.appendChild(message);
+  messageSection.appendChild(button);
+
+  if (xOy == 1) {
+    message.textContent = "PLAYER 1 Win, do you want to play again?";
+  } else if (xOy == 2) {
+    message.textContent = "PLAYER 2 Win, do you want to play again?";
+  } else if (xOy == 0) {
+    message.textContent = "Draw, do you want to play again?";
+  }
+  button.style.display = "inline";
+  button.textContent = "PRESS TO PLAY AGAIN";
+
+  button.addEventListener("click", function () {
+    boardArray = ["", "", "", "", "", "", "", "", ""];
+    empate = 0;
+    turns = 0;
+    win = false;
+    for (let i = 0; i < 9; i++) {
+      square[i].style.backgroundColor = "white";
+    }
+    message.textContent = "";
+    button.style.display = "none";
+    xOy = 0;
+  });
 }
 
 function logicBoard() {
